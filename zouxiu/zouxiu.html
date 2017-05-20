@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	   <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	   <!--<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>-->
+	   <script src="js/touch.min.js" type="text/javascript" charset="utf-8"></script>
+	   <script src="js/zepto-1.1.6.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<input type="text" name="" id="" value="" />
+		<input type="text" name="" id="" value="" />
+		<button>登录</button>
+	</body>
+	<script type="text/javascript">
+		$("button").click(function(){
+			$.ajax({
+			type:"get",
+			url:" http://datainfo.duapp.com/shopdata/userinfo.php",
+			data:{status:"register",userID:$("input").eq(0).val(),passWord:$("input").eq(1).val()},
+			dataType:'json',
+			success:function(data){
+				console.log(data)
+			}
+		})
+		})
+//		$.ajax({
+//			type:"get",
+//			url:" http://datainfo.duapp.com/shopdata/userinfo.php",
+//			data:{status:"register",userID:$("input").eq(0).val(),passWord:$("input").eq(1).val()},
+//			dataType:'json',
+//			success:function(data){
+//				console.log(data)
+//			}
+//		});
+	</script>
+</html>

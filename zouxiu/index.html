@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="js/animate.min.css"/>
+		<link rel="stylesheet" type="text/css" href="js/swiper-3.3.1.min.css"/>
+		<script src="js/zepto.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/swiper-3.3.1.jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/swiper.animate1.0.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/rem.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/touch.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			html{
+				font-size: 100px;width: 100%;
+				height: 100%;
+			}
+			*{
+				margin: 0;padding: 0;
+			}
+			.box {
+				height: 100%;
+				width: 100%;
+				position: relative;/*display: none;*/
+			}
+			
+			.swiper-slide {
+				height: 100vh;
+				width: 100vw;
+				background: #f8f3f7;
+			}
+		     
+		     .aa>.img1{
+		     	margin-top: 1.92rem;margin-left: 1.92rem;
+		     	width: 2.59rem;height: 3.60rem;
+		     }
+		     .aa>.img2{
+		     	width: 6.4rem;height: 1.12rem;
+		     	margin-top: 4.5rem;
+		     }
+		     .bb>.img1{
+		     	width:6.40rem;height: 5.03rem;
+		     }
+		      .bb>.img2{
+		      	width: 3.43rem;height: 0.48rem;
+		      	margin-left: 1.79rem;
+		      }
+		      .bb>.img3{
+		      	width: 3.43rem;height: 0.48rem;
+		      	margin-top:0.38rem;
+		      }
+		      .cc>.img1{
+		      	margin-top:0.71rem;margin-left: 3.03rem;
+		     	width:0.46rem;height: 1.2rem;
+		     }
+		     .cc>.img2{
+		      	margin-top:0.26rem;margin-left: 2.3rem;
+		     	width:1.82rem;height: 0.42rem;
+		     }
+		     .cc>.img3{
+		      	margin-top:1rem;margin-left: 2.06rem;
+		     	width:2.24rem;height: 2.24rem;
+		     }
+		     .cc>.img4{
+		      	margin-top:1.5rem;margin-left: 0.83rem;
+		     	width:3.91rem;height: 2.15rem;
+		     }
+		     .dd>.img1{
+		      	margin-top:1.5rem;margin-left: 2.01rem;
+		     	width:2.37rem;height: 0.57rem;
+		     }
+		     .dd>.img2{
+		      	margin-top:0.80rem;margin-left: 1.26rem;
+		     	width:3.73rem;height: 3.03rem;
+		     }
+		     .dd>.img3{
+		      	margin-top:0.34rem;margin-left: 1.6rem;
+		     	width:2.92rem;height:1.94rem;
+		     }
+			.ee button{
+				position: absolute;z-index: 999;
+				bottom: 15.6%;
+				left: 27.7%;
+				width: 2.88rem;height: 0.94rem;
+				background: #e35c84;
+				border-radius:6px ;
+				font-size: 0.34rem;
+				border: none;color: white;outline: none;
+				box-shadow: 0 1px 3px #e5376a;
+			}
+			.ee a{
+				width: 2.88rem;height: 0.94rem;color: white;text-decoration: none;
+			}
+			.ee>.img1{
+				margin-top:1.81rem;margin-left: 3.06rem;
+		     	width:0.43rem;height:1.18rem;
+		     	animation: move1 2s linear infinite;
+			}
+			
+			@keyframes move1 {
+				from {
+					transform: translateY(0);
+					opacity: 1;
+				}
+				to {
+					opacity: 0;
+					transform: translateY(60px);
+				}
+			}
+			.ee>.img2{
+				margin-top:2rem;margin-left: 1.05rem;
+		     	width:4.51rem;height:0.32rem;
+		     	
+			}
+			.page>span{
+				background: #e5376a;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<div class="swiper-container box" id="box">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide aa">
+					<img class="ani img1" swiper-animate-effect="bounceIn" swiper-animate-duration="1s" swiper-animate-delay="0"  src="img/01.png"/>
+					<img class="ani img2" swiper-animate-effect="fadeInDown" swiper-animate-duration="1s" swiper-animate-delay="1s" src="img/02.png"/>
+				</div>
+				<div class="swiper-slide bb">
+					<img class="ani img1" swiper-animate-effect="bounceIn" swiper-animate-duration="3s" swiper-animate-delay="0" src="img/03.png"/>
+					<img class="ani img2" swiper-animate-effect="bounceInLeft" swiper-animate-duration="3s" swiper-animate-delay="0" src="img/04.png" alt="" />
+					<img class="ani img3" swiper-animate-effect="bounceInRight" swiper-animate-duration="4s" swiper-animate-delay="1" src="img/05.png" alt="" />
+				</div>
+				<div class="swiper-slide cc">
+					<img class="ani img1" swiper-animate-effect="bounce" swiper-animate-duration="1s" swiper-animate-delay="0"  src="img/06.png"/>
+					<img class="ani img2" swiper-animate-effect="bounceInLeft" swiper-animate-duration="2s" swiper-animate-delay="1"  src="img/07.png"/>
+					<img class="ani img3" swiper-animate-effect="rollIn" swiper-animate-duration="3s" swiper-animate-delay="4"  src="img/08.png"/>
+					<img class="ani img4" swiper-animate-effect="bounceInUp" swiper-animate-duration="3s" swiper-animate-delay="6"  src="img/09.png"/>
+				</div>
+				<div class="swiper-slide dd">
+					<img class="ani img1" swiper-animate-effect="rubberBand" swiper-animate-duration="1s" swiper-animate-delay="1" src="img/10.png"/>
+					<img class="ani img2" swiper-animate-effect="rollIn" swiper-animate-duration="2s" swiper-animate-delay="2" src="img/11.png"/>
+					<img class="ani img3" swiper-animate-effect="bounceInUp" swiper-animate-duration="3s" swiper-animate-delay="4" src="img/12.png"/>
+				</div>
+				<div class="swiper-slide ee">
+					<img class="ani img1" swiper-animate-effect="rubberBand" swiper-animate-duration="1s" swiper-animate-delay="1" src="img/13.png"/>
+					<img class="ani img2" swiper-animate-effect="rubberBand" swiper-animate-duration="3s" swiper-animate-delay="1" src="img/14.png"/>
+					<button id="in"><a href="login.html">开始体验</a></button>
+				</div>
+			</div>
+			<!-- 如果需要分页器 -->
+			<div class="swiper-pagination page"></div>
+			
+		</div>
+         
+	</body>
+
+	<script type="text/javascript">
+		window.onload = function() {
+			var mySwiper = new Swiper('.swiper-container', {
+				initialSlide :0,
+				direction: 'horizontal',
+				loop: true,
+				// 如果需要分页器
+				pagination: '.swiper-pagination',
+				onInit: function(swiper) { //Swiper2.x的初始化是onFirstInit
+				swiperAnimateCache(swiper); //隐藏动画元素 
+				swiperAnimate(swiper); //初始化完成开始动画
+			},
+			onSlideChangeEnd: function(swiper) {
+				swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
+			}
+			})
+         
+		}
+		 $("#in").on("tap",function(){
+			
+          	window.location.href="login.html"
+          })
+		
+	</script>
+
+</html>

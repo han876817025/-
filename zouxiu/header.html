@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title>抽奖</title>
+    <link rel="stylesheet" type="text/css" href="icons/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="icons/demo.css"/>
+    <link rel="stylesheet" type="text/css" href="js/swiper-3.3.1.min.css"/>
+    <script src="js/rem.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/zepto.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/touch.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/swiper-3.3.1.jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 100px;
+            width: 100%;
+            height: 100%;
+            background: #f3eff0;
+        }
+
+        body {
+            background: #f3eff0;
+            width: 100%;
+            height: 100%;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        header {
+            width: 100vw;
+            height: 0.85rem;
+            background: #b01e1e;
+            display: flex;
+            color: white;
+            justify-content: center;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        header > span:nth-child(1) {
+            font-size: 0.6rem;
+        }
+
+        header > span:nth-child(2) {
+            font-size: 0.3rem;
+            margin-left: 1.81rem;
+        }
+
+        header > button {
+            width: 1.07rem;
+            height: 0.57rem;
+            border: 1px solid #b13e3b;
+            border-radius: 0.2rem;
+            margin-left: 1.31rem;
+            background: #be0c0a;
+            outline: none;
+            color: white;
+            font-size: 0.3rem;
+        }
+
+        header > button > img {
+            width: 1.07rem;
+            height: 0.57rem;
+        }
+
+        .chou {
+            margin-top: 0.15rem;
+            width: 6.10rem;
+            height: 5.70rem;
+            margin-left: 0.15rem;
+            background: #a90506;
+        }
+
+        .uu {
+            width: 6.20rem;
+        }
+
+        li {
+            list-style: none;
+            width: 2.03rem;
+            height: 1.90rem;
+            font-size: 0.4rem;
+            font-family: "微软雅黑";
+            float: left;
+            line-height: 1.90rem;
+            text-align: center;
+            color: red;
+        }
+
+        .meau {
+            margin-top: 0.15rem;
+            width: 6.13rem;
+            margin-left: 0.15rem;
+            height: 100%;
+            background: #ff4948;
+            overflow: auto;
+        }
+        .meau div{
+        	text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    <span id="reback" class="iconfont">&#xe619;</span>
+    <span>转盘抽奖</span>
+    <button id="goshop"><img src="img/tc.png" alt=""/></button>
+</header>
+
+<div class="chou">
+    <ul class="uu">
+        <li class="1"></li>
+        <li class="2"></li>
+        <li class="3"></li>
+        <li class="4"></li>
+        <li id="start" style="background:#640000 ;">抽奖</li>
+        <li class="5"></li>
+        <li class="6"></li>
+        <li class="7"></li>
+        <li class="8"></li>
+    </ul>
+</div>
+<div id="meau" class="meau">
+
+</div>
+
+</body>
+<script type="text/javascript">
+    var i = 0
+    var flag = 0;
+    var arr = ["1", "2", "3", "5", "8", "7", "6", "4"]
+    $("#start").on("tap", function () {
+        if (flag == 0) {
+            $("li").not($("#start")).css("background", "#a90506");
+            $("li").not($("#start")).html("");
+            fn()
+            flag = 1;
+        } else {
+            clearInterval(fs);
+            console.log(arr[i])
+            $("." + arr[i - 1] + "").html(arr[i] + "等奖")
+            flag = 0;
+            $.ajax({
+                type: "post",
+                url: "http://datainfo.duapp.com/lottery/fruitsubmit.php",
+                data: {
+                    userID: localStorage.getItem("name"),
+                    fruit: i - 1
+                },
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data)
+                }
+
+            })
+            }
+        })
+
+        function fn() {
+            fs = setInterval(function () {
+                $("." + arr[i] + "").css("background", "white");
+                $("li").not($("." + arr[i] + "")).css("background", "#a90506");
+                $("#start").css("background", "#640000")
+                i++;
+                if (i == 8) {
+                    i = 0;
+                }
+            }, 100)
+        }
+        function fx(){
+        	 $.ajax({
+                type: "get",
+                url: " http://datainfo.duapp.com/lottery/getsuerfr.php",
+                dataType: 'jsonp',
+                success: function (data) {
+                    console.log(data)
+                    for(var i=0;i<data.length;i++){
+                    	var _div=document.createElement("div")
+                    	switch (Number(data[i].fruit)){
+                    		case 1:
+                    		_div.innerHTML="一等奖       "+"userID:"+data[i].userID+"  时间"+data[i].timer;
+                    	document.getElementById("meau").appendChild(_div);
+                    			break;
+                    			case 2:
+                    		_div.innerHTML="二等奖       "+"userID:"+data[i].userID+"   时间"+data[i].timer;
+                    	document.getElementById("meau").appendChild(_div);
+                    			break;
+                    			case 3:
+                    		_div.innerHTML="三等奖     "+"userID:"+data[i].userID+"   时间"+data[i].timer;
+                    	document.getElementById("meau").appendChild(_div);
+                    			break;
+                    		default:
+                    		_div.innerHTML="四等奖       "+"userID:"+data[i].userID+"   时间"+data[i].timer;
+                    	document.getElementById("meau").appendChild(_div);
+                    			break;
+                    	}
+                    }
+                    
+                }
+
+            })
+        } fx()
+        $("#reback").on("tap",function(){
+        	window.open("list.html")
+        })
+</script>
+
+</html>

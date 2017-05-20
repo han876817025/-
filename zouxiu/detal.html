@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>详情</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <link rel="stylesheet" type="text/css" href="icons/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="icons/demo.css"/>
+    <link rel="stylesheet" type="text/css" href="js/swiper-3.3.1.min.css"/>
+    <script src="js/rem.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/zepto.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/touch.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/swiper-3.3.1.jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 100px;
+            width: 100%;
+            height: 100%;
+            background: #f3eff0;
+        }
+
+        .warp {
+            width: 95%;
+            margin: 0.5rem auto;
+        }
+
+        body {
+            background: #f3eff0;
+            width: 100%;
+            height: 100%;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        header {
+            width: 100vw;
+            height: 0.85rem;
+            background: #b01e1e;
+            display: flex;
+            color: white;
+            justify-content: center;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        header > span:nth-child(1) {
+            font-size: 0.6rem;
+        }
+
+        header > span:nth-child(2) {
+            font-size: 0.3rem;
+            margin-left: 1.81rem;
+        }
+
+        header > button {
+            width: 1.07rem;
+            height: 0.57rem;
+            border: 1px solid #b13e3b;
+            border-radius: 0.2rem;
+            margin-left: 1.31rem;
+            background: #be0c0a;
+            outline: none;
+            color: white;
+            font-size: 0.3rem;
+        }
+
+        header > button > img {
+            width: 1.07rem;
+            height: 0.57rem;
+        }
+
+        .section {
+            -webkit-box-flex: 1;
+        }
+
+        .contain {
+            width: 100vw;
+            height: 5rem;
+        }
+
+        .contain img {
+            height: auto;
+            width: auto;
+            height: 4rem;
+            width: 100vw;
+        }
+
+        .contain > #sp {
+            top: 4.5rem;
+            left: 40%;
+            border-radius: 0.38rem;
+            width: auto;
+            height: 0.38rem;
+            background: #bcbcbc;
+            background: white;
+        }
+        .det,
+        .price,
+        .lp,
+        .mg {
+            width: 100vw;
+            font-size: 0.25rem;
+            font-family: "微软雅黑";
+        }
+
+        .price {
+            color: #bb0953;
+            font-weight: bold;
+        }
+
+        .detal {
+            width: 100vw;
+            height: 1rem;
+            background: white;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .detal > span:nth-child(1) {
+            margin-left: 0.21rem;
+            margin-right: 0.28rem;
+            color: #b52121;
+        }
+
+        .detal > span:nth-child(2) {
+            font-size: 0.26rem;
+            font-family: "微软雅黑";
+            color: #797979;
+        }
+
+        .detal > span:nth-child(3) {
+            font-size: 0.3rem;
+            margin-left: 3.27rem;
+            font-family: "微软雅黑";
+            font-weight: bolder;
+            color: #797979;
+        }
+
+        footer {
+            position: relative;
+            height: 1rem;
+            width: 100vw;
+            background: #a3a3a3;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        footer > .add {
+            line-height: 0.85rem;
+            color: #FFFFFF;
+            font-size: 0.3rem;
+            font-family: "微软雅黑";
+            width: 4.35rem;
+            height: 0.85rem;
+            text-align: center;
+            background: #a61817;
+            border-radius: 0.08rem;
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    <span id="reback" class="iconfont">&#xe619;</span>
+    <span>商品详情</span>
+    <button id="goshop"><img src="img/he.png" alt=""/></button>
+</header>
+<div class="section">
+    <div class="swiper-container contain">
+        <div class="swiper-wrapper  photo">
+        </div>
+        <div id="sp" class="swiper-pagination"></div>
+    </div>
+    <div class="warp">
+        <p class="det" style="margin-top:0.24rem ">商品详情</p>
+        <div style="margin-top:0.24rem ">
+            <span class="price">￥98.00</span>
+            <span class="lp" style="margin-left: 0.6rem;text-decoration: line-through;">159.00</span>
+        </div>
+        <div style="margin-top:0.24rem " class="mg">购买人数：209</div>
+    </div>
+
+</div>
+<div class="detal">
+    <span class="iconfont">&#xe6a3;</span>
+    <span>查看商品详情</span>
+    <span> > </span>
+</div>
+<footer>
+    <div class="add" id="add">添加到购物车</div>
+</footer>
+</body>
+<script type="text/javascript">
+    var _id = window.location.href;
+    var _classid = _id.match(/\=.+/g)[0].replace("=", "");
+    var _goodid = _id.match(/\=.+/g)[0].replace("=", "");
+      var _add=document.getElementById("add");
+      var _gs=document.getElementById("goshop");
+    window.onload = function () {
+        //		    获取数据；
+//							setInterval(function() {
+        $.ajax({
+            type: "get",
+            url: " http://datainfo.duapp.com/shopdata/getGoods.php",
+            data: {
+                goodsID: _classid,
+                linenumber: 10
+            },
+            dataType: 'jsonp',
+            success: function (data) {
+//          	console.log(data[0])
+//              console.log(JSON.parse(data[0].imgsUrl)[0])
+                //                
+                $(".det").html(data[0].goodsName)
+                $(".price").html("￥" + data[0].price + ".00")
+                $(".lp").html(Math.round(data[0].discount * data[0].price) + ".00")
+                //						
+                //
+                console.log(JSON.parse(data[0].imgsUrl).length)
+                var con = null;
+                for (var i = 0; i < JSON.parse(data[0].imgsUrl).length; i++) {
+//                    console.log($(".photo"))
+                    var _div = document.createElement("div");
+                    _div.className = "swiper-slide aa";
+                    var _img = document.createElement("img");
+                    _img.src = JSON.parse(data[0].imgsUrl)[i];
+                    _div.appendChild(_img);
+                    $(".photo")[0].appendChild(_div);
+                }
+                var mySwiper = new Swiper('.swiper-container', {
+                    direction: 'horizontal',
+                    loop: true,
+                    pagination: '.swiper-pagination',
+                    // 如果需要前进后退按钮
+                })
+
+            }
+        });
+        $("#add").on("tap",function () {
+            localStorage.setItem(_classid+"/"+_goodid,_goodid);
+        })
+        $("#goshop").on("tap",function () {
+            window.location.href="shopcar.html"
+        });
+        $("#reback").on("tap",function () {
+            window.history.go(-1);
+        })
+
+//								},500)
+
+        //				--------------
+
+    }
+</script>
+
+</html>

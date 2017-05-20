@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title> 购物车</title>
+    <link rel="stylesheet" type="text/css" href="icons/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="icons/demo.css"/>
+    <link rel="stylesheet" type="text/css" href="font/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="fon1/iconfont.css"/>
+    <script src="js/rem.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/zepto.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/touch.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/iscroll.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css">
+        html {
+            font-size: 100px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .fl {
+            float: left;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        header {
+            width: 100vw;
+            height: 0.85rem;
+            background: #b01e1e;
+            display: flex;
+            color: white;
+            justify-content: center;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        header > span:nth-child(1) {
+            font-size: 0.3rem;
+            margin-left: 1.81rem;
+        }
+
+        header > button {
+            width: 1.07rem;
+            height: 0.57rem;
+            border: 1px solid #b13e3b;
+            border-radius: 0.2rem;
+            margin-left: 1.31rem;
+            background: #be0c0a;
+            /*box-shadow: 0rem,0.8rem,0.08rem, white;*/
+            outline: none;
+            color: white;
+            font-size: 0.3rem;
+        }
+
+        header > button > img {
+            width: 1.07rem;
+            height: 0.57rem;
+        }
+
+        .all {
+            width: 100vw;
+            height: 0.61rem;
+            background: #747474;
+            font-size: 0.25rem;
+            font-family: "微软雅黑";
+            color: #FFFFFF;
+            padding-top: 0.29rem;
+            padding-left: 0.25rem;
+        }
+
+        section {
+            -webkit-box-flex: 1;
+            overflow: hidden;
+        }
+
+        section > .foods {
+
+            width: 100vw;
+            height: 2.06rem;
+            padding: 0.26rem 0 0 0.33rem;
+            border-bottom: solid 1px #aaaaaa;
+            font-size: 0.25rem;
+            font-family: "微软雅黑";
+            font-weight: bold;
+            color: #323232;
+        }
+
+        section > .foods > .img {
+            width: 1.75rem;
+            height: 1.73rem;
+            background: #843534;
+        }
+
+        section > .foods .f-d {
+            width: 3.23rem;
+            height: 1.73rem;
+            margin-left: 0.38rem;
+
+        }
+
+        section > .foods > .f-d button {
+            border: none;
+            background: #939393;
+            width: 0.58rem;
+            height: 0.42rem;
+            border-radius: 0.1rem;
+            outline: none;
+            font-family: "微软雅黑";
+            color: #FFFFFF;
+            font-size: 0.3rem;
+        }
+
+        section > .foods .f-d .num {
+            margin-top: 0.02rem;
+            display: inline-block;
+            width: 0.73rem;
+            height: 0.42rem;
+            border-radius: 0.08rem;
+            border: 1px solid #999999;
+            margin: 0 0.03rem;
+            box-shadow: 0.01rem 0.02rem 0.02rem #999999;
+            text-align: center;
+            line-height: 0.42rem;
+            outline: none;
+
+        }
+
+        footer {
+            position: relative;
+            height: 1rem;
+            width: 100vw;
+            background: #484850;
+        }
+
+        footer > div {
+            border-top: solid 3px #484850;
+            width: 20%;
+            height: 0.97rem;
+            float: left;
+            text-align: center;
+            color: white;
+            font-size: 0.26rem;
+            font-family: "微软雅黑";
+        }
+
+        footer > div > i {
+            font-size: 30px;
+        }
+
+        .iconfont {
+            font-size: 25px;
+        }
+
+        footer .bb {
+
+            position: relative;
+        }
+
+        footer .number {
+            width: 0.3rem;
+            height: 0.3rem;
+            line-height: 0.3rem;
+            color: #FFFFFF;
+            background: #b52121;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0.7rem;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <span>新品上市</span>
+    <button><img src="img/shopcar.png" alt=""/></button>
+</header>
+<div class="all">
+    <span>商品数量: </span>
+    <span class="number">0</span>
+    <span>应付总额（不含运费）:</span>
+    <span class="all-price" style="color: #aa1a19;">￥</span>
+</div>
+<section>
+
+</section>
+<footer>
+    <div class="bb">
+        <i class="iconfont">&#xe644;</i><br/>
+        <span><a href="header.html" style="color: white;">首页</a></span>
+    </div>
+    <div class="bb">
+        <i class="iconfont">&#xe692;</i><br/>
+        <span><a href="list.html" style="color: white;">分类</a></span>
+    </div>
+    <div class="bb" style="border-top:0.04rem solid #ab1b1a;">
+        <i class="iconfont">&#xe61b;</i><br/>
+        <span><a href="shopcar.html" style="color: white;">购物车</a></span>
+        <span id="number" class="number" style="position: absolute">0</span>
+    </div>
+    <div class="bb">
+        <i class="iconfont">&#xe646;</i><br/>
+        <span><a href="list.html" style="color: white;">我的秀</a></span>
+    </div>
+    <div class="bb">
+        <i class="iconfont icon-gengduo"></i><br/>
+        <span>更多</span>
+    </div>
+</footer>
+</body>
+<script type="text/javascript">
+    <!--获取数据-->
+    window.onload = function () {
+//  	ajs("3",0)
+        var con = "";
+        var xx=0;
+        var _eprice=0;
+        for (var i = 0; i < localStorage.length; i++) {
+            if((/\/+/g).test(localStorage.key(i))){
+            	xx++;
+            	 $(".number").html(xx);
+            	
+                fn(i)
+            }
+
+        }
+        //购物车更新
+        function ajs(goodsID,number){
+        	 $.ajax({
+                type: "post",
+                url: " http://datainfo.duapp.com/shopdata/updatecar.php",
+                data: {
+                    userID: localStorage.getItem("name"),
+                    goodsID: goodsID,
+                    number:number
+                },
+                dataType: 'json',
+                success: function (data) {
+                	 console.log(data)
+                	 ff();
+                	
+                }
+             })
+        };    ajs()
+        //查看购物车
+        function ff(){
+        	var nn=0;
+        	$.ajax({
+                type: "get",
+                url: " http://datainfo.duapp.com/shopdata/getCar.php",
+                data: {
+                    userID: 1234567111
+                },
+                dataType: 'jsonp',
+                success: function (data) {
+                	console.log(data)
+                	for(var i=0;i<data.length;i++){
+                		nn+=Number(data[i].price)*Number(data[i].number);
+                	$("#"+data[i].goodsID +"").val(Number(data[i].number))
+                		$(".all-price").html("￥"+nn);
+                	}
+                	
+                }
+             })
+        }ff();
+         
+        //加载商品
+        function fn(n) {
+            $.ajax({
+                type: "get",
+                url: " http://datainfo.duapp.com/shopdata/getGoods.php",
+                data: {
+                    goodsID: localStorage.key(n).split("/")[0],
+                    linenumber: 10
+                },
+                dataType: 'jsonp',
+                success: function (data) {
+                    con += "<div class='foods'>" +
+                        "<img class='img fl' src='" + data[0].goodsListImg + "' alt=''>" +
+                        "<div class='f-d fl'>" +
+                        "<p>" + data[0].goodsName + "</p>" +
+                        "<span>单价:</span><span class='f-price' style='color: #aa1a19;'>￥" + data[0].price + "</span>" +
+                        "<div style='line-height: 0.57rem;margin-top: '0.1rem'><span class='fl'>数量：</span><button  class='jn'>-</button><input id='"+localStorage.key(n).split("/")[0] +"' class='num' type='text' value='1'><button class='add'>+</button></div>" +
+                        "</div>" +
+                        "<div class='delate fl iconfont' id='"+localStorage.key(n)+"'>&#xe68d;</div>" +
+                        "</div>";
+                    $("section").html(con);
+//                    计算总价
+                   for(var ss=0;ss<$(".f-price").length;ss++){
+                   	 _eprice+=Number($(".f-price").eq(ss).html().replace("￥",""))
+                   	 $(".all-price").html("￥"+_eprice);
+                   }
+                   
+//                    fs();
+                    $(".all-price").html()
+                    $("button").each(function (s) {
+                        $("button").eq(s)[0].index=s;
+                        $("button").eq(s).on("tap", function () {
+                            if (this.className == "jn") {
+                                if ($(this).next(".num")[0].value != 0) {
+                                    $(this).next(".num")[0].value--;
+                                     ajs($(this).next(".num")[0].id,$(this).next(".num")[0].value);                               
+                                }
+                            }
+                            if (this.className == "add") {
+                                $(this).prev(".num")[0].value++;
+                                ajs($(this).prev(".num")[0].id,$(this).prev(".num")[0].value);
+                              
+                            }
+                        })
+                    })
+//   删除
+                    $(".delate").each(function (i) {
+                        $(".delate").eq(i)[0].index=i;
+                        $(".delate").eq(i).on("tap",function () {
+                            console.log(this.id)
+                            localStorage.removeItem(this.id);
+                            console.log(this.id.split("/")[0])
+                            ajs(this.id.split("/")[0],0)
+                           window.location.href="shopcar.html";
+                           
+                            $(".foods").eq(this.index).css("display","none");
+                        })
+                    })
+                }
+            })
+
+         }
+
+    }
+
+
+</script>
+</html>

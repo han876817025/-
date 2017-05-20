@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title>商品列表</title>
+    <link rel="stylesheet" type="text/css" href="icons/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="icons/demo.css"/>
+    <link rel="stylesheet" type="text/css" href="font/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="fon1/iconfont.css"/>
+    <script src="js/rem.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/zepto.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/touch.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/iscroll.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css">
+        html {
+            font-size: 100px;
+            width: 100%;
+            height: 100%;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        header {
+            width: 100vw;
+            height: 0.85rem;
+            background: #b01e1e;
+            display: flex;
+            color: white;
+            justify-content: center;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        header > span:nth-child(1) {
+            font-size: 0.3rem;
+            margin-left: 1.81rem;
+        }
+
+        header > button {
+            width: 1.07rem;
+            height: 0.57rem;
+            border: 1px solid #b13e3b;
+            border-radius: 0.2rem;
+            margin-left: 1.31rem;
+            background: #be0c0a;
+            /*box-shadow: 0rem,0.8rem,0.08rem, white;*/
+            outline: none;
+            color: white;
+            font-size: 0.3rem;
+        }
+
+        header > button > img {
+            width: 1.07rem;
+            height: 0.57rem;
+        }
+
+        .ls {
+            width: 100vw;
+            height: 0.7rem;
+            background: rgba(0, 0, 0, 0.4);
+            position: relative;
+        }
+
+        .ls > ul {
+            width: 100vw;
+            height: 0.6rem;
+            /*background: rgba(0, 0, 0, 0.4);*/
+            display: flex;
+            color: black;
+            justify-content: center;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .ls > ul > li {
+            float: left;
+            margin-right: 0.24rem;
+            font-size: 0.35rem;
+        }
+
+        .ls > i {
+            position: absolute;
+            top: 0.4rem;
+            left: 0.12rem;
+            color: white;
+        }
+
+        .list {
+            -webkit-box-flex: 1;
+            overflow: hidden;
+        }
+
+        .list > ul {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .list > ul > li {
+            margin-left: 0.4rem;
+            float: left;
+            width: 2.59rem;
+            height: 3.72rem;
+
+            margin-top: 0.31rem;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .list > ul > li > img {
+            width: 2.59rem;
+            height: 2.45rem;
+            box-shadow: 1px 1px 7px #262626;
+            color: #262626;
+        }
+
+        .list > ul > li > img:hover {
+            transform: scale(1.1);
+        }
+
+        .list > ul > li > p {
+            margin-top: 0.1rem;
+            margin-bottom: 0.15rem;
+            font-weight: bold;
+            font-size: 0.20rem;
+            font-family: "微软雅黑";
+            overflow: hidden;
+            /*width: 2.59rem;white-space: nowrap;overflow: hidden;*/
+            /*text-overflow: ellipsis;*/
+        }
+
+        .list .s1 {
+            margin-right: 0.57rem;
+            font-size: 0.25rem;
+            color: #d41014;
+            font-weight: bold;
+            font-family: "微软雅黑";
+        }
+
+        .list em {
+            font-size: 0.25rem;
+            color: #d41014;
+            font-weight: bold;
+            font-family: "微软雅黑";
+        }
+
+        .list .s2 {
+            color: #b2b2b4;
+            font-size: 0.25rem;
+            font-family: "微软雅黑";
+            text-decoration: line-through;
+        }
+
+        #uu {
+            position: relative;
+        }
+
+        #uu
+        .la {
+            display: none;
+            font-family: "微软雅黑";
+            font-size: 0.35rem;
+            line-height: 0.9rem;
+            text-align: center;
+            position: absolute;
+            z-index: 999;
+            width: 100vw;
+            top: -0.7rem;
+            height: 0.9rem;
+            background: gold;
+        }
+
+        footer {
+            position: relative;
+            height: 1rem;
+            width: 100vw;
+            background: #484850;
+        }
+
+        footer > div {
+            border-top: solid 3px #484850;
+            width: 20%;
+            height: 0.97rem;
+            float: left;
+            text-align: center;
+            color: white;
+            font-size: 0.26rem;
+            font-family: "微软雅黑";
+        }
+
+        footer > div > i {
+            font-size: 30px;
+        }
+
+        .iconfont {
+            font-size: 25px;
+        }
+
+    </style>
+    <script>
+        window.PointerEvent = void 0
+    </script>
+
+</head>
+
+<body>
+<header>
+    <span>新品上市</span>
+    <button><img id="car" src="img/he.png" alt=""/></button>
+</header>
+<div class="ls">
+    <ul id="ul">
+        <li class="iconfont" style="color:white;transform: scale(1.5);">&#xe675;</li>
+        <li class="iconfont">&#xe67d;</li>
+        <li class="iconfont">&#xe685;</li>
+        <li class="iconfont">&#xe680;</li>
+        <li class="iconfont">&#xe684;</li>
+        <li class="iconfont">&#xe682;</li>
+        <li class="iconfont">&#xe66f;</li>
+        <li class="iconfont">&#xe672;</li>
+        <li class="iconfont">&#xe666;</li>
+        <li class="iconfont">&#xe673;</li>
+    </ul>
+    <i id="san" class="iconfont icon-tri_down"></i>
+</div>
+<div class="list" id="wrapper">
+
+    <ul id="uu">
+
+
+    </ul>
+</div>
+<footer>
+    <div class="bb">
+        <i class="iconfont">&#xe644;</i><br/>
+        <span><a href="header.html" style="color: white;">首页</a></span>
+    </div>
+    <div class="bb">
+        <i class="iconfont">&#xe692;</i><br/>
+        <span><a href="list.html" style="color: white;">分类</a></span>
+    </div>
+    <div class="bb">
+        <i class="iconfont">&#xe61b;</i><br/>
+        <span><a href="shopcar.html" style="color: white;">购物车</a></span>
+    </div>
+    <div class="bb">
+        <i class="iconfont">&#xe646;</i><br/>
+       <span><a href="index.html" style="color: white;">我的秀</a></span>
+    </div>
+    <div class="bb">
+        <i class="iconfont icon-gengduo"></i><br/>
+        <span>更多</span>
+    </div>
+</footer>
+</body>
+<script type="text/javascript">
+
+    var con = null;
+    $("#car").on("tap",function(){
+    	window.location.href="shopcar.html"
+    })
+    $("#ul li").each(function (i) {
+        $("#ul li").eq(i)[0].index = i;
+        $("#ul li").eq(i).on("tap", function () {
+//            window.location.href="deatl.html";
+            var arr = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5]
+            $("#ul li").not($(this)).css("color", "black")
+            $(this).css("color", "white")
+            $("#san")[0].style.transform = "translateX(" + this.index * 0.6 + "rem)"
+            $("#ul li").eq(this.index)[0].style.transform = "scale(1.5)"
+            $("#ul li").not($(this)).css("transform", "scale(1)");
+            //--------------
+            n = this.index;
+            $.ajax({
+                type: "get",
+                url: " http://datainfo.duapp.com/shopdata/getGoods.php",
+                data: {
+                    classID: n = n >= 6 ? arr[n] : n,
+                    linenumber: 10
+                },
+                dataType: 'jsonp',
+                success: function (data) {
+
+                    con =
+                        "<div class='la'>快点松开我,我飞给看</div>" +
+                        "<li id='"+data[0].goodsID+"'>" +
+                        "<img src='" + data[0].goodsListImg + "'  />" +
+                        "<p>" + data[0].goodsName + "</p>" +
+                        "<div>" + "<em>￥</em><span class='s1'>" + data[0].price + ".00</span ><span class='s2'>￥999</span></div>" +
+                        "</li>" +
+                        "<li id='"+data[8].goodsID+"'>" +
+                        "<img src='" + data[8].goodsListImg + "'  />" +
+                        "<p>" + data[8].goodsName + "</p>" +
+                        "<div>" + "<em>￥</em><span class='s1'>" + data[8].price + ".00</span ><span class='s2'>￥999</span></div>" +
+                        "</li>" +
+                        "<li id='"+data[1].goodsID+"'>" +
+                        "<img src='" + data[1].goodsListImg + "'  />" +
+                        "<p>" + data[1].goodsName + "</p>" +
+                        "<div>" + "<em>￥</em><span class='s1'>" + data[1].price + ".00</span ><span class='s2'>￥999</span></div>" +
+                        "</li>" +
+                        "<li id='"+data[2].goodsID+"'>" +
+                        "<img src='" + data[2].goodsListImg + "'  />" +
+                        "<p>" + data[2].goodsName + "</p>" +
+                        "<div>" + "<em>￥</em><span class='s1'>" + data[2].price + ".00</span ><span class='s2'>￥999</span></div>" +
+                        "</li>" +
+                        "<li id='"+data[3].goodsID+"'>" +
+                        "<img src='" + data[3].goodsListImg + "'  />" +
+                        "<p>" + data[3].goodsName + "</p>" +
+                        "<div>" + "<em>￥</em><span class='s1'>" + data[3].price + ".00</span ><span class='s2'>￥999</span></div>" +
+                        "<li id='"+data[4].goodsID+"'>" +
+                        "<img src='" + data[4].goodsListImg + "'  />" +
+                        "<p>" + data[4].goodsName + "</p>" +
+                        "<div>" + "<em>￥</em><span class='s1'>" + data[4].price + ".00</span ><span class='s2'>￥999</span></div>" +
+                        "</li>" +
+                        "<li id='"+data[5].goodsID+"'>" +
+                        "<img src='" + data[5].goodsListImg + "'  />" +
+                        "<p>" + data[5].goodsName + "</p>" +
+                        "<div>" + "<em>￥</em><span class='s1'>" + data[5].price + ".00</span ><span class='s2'>￥999</span></div>" +
+                        "</li>" +
+                        "<li id='"+data[6].goodsID+"'>" +
+                        "<img src='" + data[6].goodsListImg + "'  />" +
+                        "<p>" + data[6].goodsName + "</p>" +
+                        "<div>" + "<em>￥</em><span class='s1'>" + data[6].price + ".00</span ><span class='s2'>￥999</span></div>" +
+                        "</li>" +
+                        "<li id='"+data[7].goodsID+"'>" +
+                        "<img src='" + data[7].goodsListImg + "' />" +
+                        "<p>" + data[7].goodsName + "</p>" +
+                        "<div>" + "<em>￥</em><span class='s1'>" + data[0].price + ".00</span ><span class='s2'>￥999</span></div>" +
+                        "</li>" +
+                        "<li id='"+data[9].goodsID+"'>" +
+                        "<img src='" + data[9].goodsListImg + "'/>" +
+                        "<p>" + data[9].goodsName + "</p>" +
+                        "<div>" + "<em>￥</em><span class='s1'>" + data[9].price + ".00</span ><span class='s2'>￥999</span></div>" +
+                        "</li>";
+                    document.getElementById("uu").innerHTML = con;
+                }
+
+            })
+
+        })
+    });
+
+    $.ajax({
+        type: "get",
+        url: " http://datainfo.duapp.com/shopdata/selectGoodes.php",
+        data: {
+            selectText: "1",
+            linenumber: 10
+        },
+        dataType: 'jsonp',
+        success: function (data) {
+            con =
+                "<div class='la'>快点松开我,我飞给看</div>" +
+                "<li id='"+data[0].goodsID+"'>" +
+                "<img src='" + data[0].goodsListImg + "'  />" +
+                "<p>" + data[0].goodsName + "</p>" +
+                "<div>" + "<em>￥</em><span class='s1'>" + data[0].price + ".00</span ><span class='s2'>￥999</span></div>" +
+                "</li>" +
+                "<li id='"+data[8].goodsID+"'>" +
+                "<img src='" + data[8].goodsListImg + "'  />" +
+                "<p>" + data[8].goodsName + "</p>" +
+                "<div>" + "<em>￥</em><span class='s1'>" + data[8].price + ".00</span ><span class='s2'>￥999</span></div>" +
+                "</li>" +
+                "<li id='"+data[1].goodsID+"'>" +
+                "<img src='" + data[1].goodsListImg + "'  />" +
+                "<p>" + data[1].goodsName + "</p>" +
+                "<div>" + "<em>￥</em><span class='s1'>" + data[1].price + ".00</span ><span class='s2'>￥999</span></div>" +
+                "</li>" +
+                "<li id='"+data[2].goodsID+"'>" +
+                "<img src='" + data[2].goodsListImg + "'  />" +
+                "<p>" + data[2].goodsName + "</p>" +
+                "<div>" + "<em>￥</em><span class='s1'>" + data[2].price + ".00</span ><span class='s2'>￥999</span></div>" +
+                "</li>" +
+                "<li id='"+data[3].goodsID+"'>" +
+                "<img src='" + data[3].goodsListImg + "'  />" +
+                "<p>" + data[3].goodsName + "</p>" +
+                "<div>" + "<em>￥</em><span class='s1'>" + data[3].price + ".00</span ><span class='s2'>￥999</span></div>" +
+                "<li id='"+data[4].goodsID+"'>" +
+                "<img src='" + data[4].goodsListImg + "'  />" +
+                "<p>" + data[4].goodsName + "</p>" +
+                "<div>" + "<em>￥</em><span class='s1'>" + data[4].price + ".00</span ><span class='s2'>￥999</span></div>" +
+                "</li>" +
+                "<li id='"+data[5].goodsID+"'>" +
+                "<img src='" + data[5].goodsListImg + "'  />" +
+                "<p>" + data[5].goodsName + "</p>" +
+                "<div>" + "<em>￥</em><span class='s1'>" + data[5].price + ".00</span ><span class='s2'>￥999</span></div>" +
+                "</li>" +
+                "<li id='"+data[6].goodsID+"'>" +
+                "<img src='" + data[6].goodsListImg + "'  />" +
+                "<p>" + data[6].goodsName + "</p>" +
+                "<div>" + "<em>￥</em><span class='s1'>" + data[6].price + ".00</span ><span class='s2'>￥999</span></div>" +
+                "</li>" +
+                "<li id='"+data[7].goodsID+"'>" +
+                "<img src='" + data[7].goodsListImg + "' />" +
+                "<p>" + data[7].goodsName + "</p>" +
+                "<div>" + "<em>￥</em><span class='s1'>" + data[0].price + ".00</span ><span class='s2'>￥999</span></div>" +
+                "</li>" +
+                "<li id='"+data[9].goodsID+"'>" +
+                "<img src='" + data[9].goodsListImg + "'  />" +
+                "<p>" + data[9].goodsName + "</p>" +
+                "<div>" + "<em>￥</em><span class='s1'>" + data[9].price + ".00</span ><span class='s2'>￥999</span></div>" +
+                "</li>";
+            document.getElementById("uu").innerHTML = con;
+        }
+    })
+//    window.onload = function () {
+        var myScroll = new IScroll('#wrapper', {
+            mouseWheel: true
+        });
+        myScroll.refresh()
+        $(document).on('touchend', function () {
+            if (myScroll.y > 10) {
+                $(".la")[0].style.display = "block";
+                $(".la")[0].style.top = "-10px";
+                $.ajax({
+                    type: "get",
+                    url: " http://datainfo.duapp.com/shopdata/getGoods.php",
+                    data: {
+                        classID: Math.floor(Math.random() * 6),
+                        linenumber: 10
+                    },
+                    dataType: 'jsonp',
+                    success: function (data) {
+                        console.log(data[0].classID)
+                        con =
+                            "<div class='la'>快点松开我,我飞给看</div>" +
+                            "<li id='" + data[0].goodsID + "-0'>" +
+                            "<img src='" + data[0].goodsListImg + "'  />" +
+                            "<p>" + data[0].goodsName + "</p>" +
+                            "<div>" + "<em>￥</em><span class='s1'>" + data[0].price + ".00</span ><span class='s2'>￥999</span></div>" +
+                            "</li>" +
+                            "<li id='" + data[8].goodsID + "-8'>" +
+                            "<img src='" + data[8].goodsListImg + "'  />" +
+                            "<p>" + data[8].goodsName + "</p>" +
+                            "<div>" + "<em>￥</em><span class='s1'>" + data[8].price + ".00</span ><span class='s2'>￥999</span></div>" +
+                            "</li>" +
+                            "<li id='" + data[1].goodsID+ "-1'>" +
+                            "<img src='" + data[1].goodsListImg + "'  />" +
+                            "<p>" + data[1].goodsName + "</p>" +
+                            "<div>" + "<em>￥</em><span class='s1'>" + data[1].price + ".00</span ><span class='s2'>￥999</span></div>" +
+                            "</li>" +
+                            "<li id='" + data[2].goodsID + "-2'>" +
+                            "<img src='" + data[2].goodsListImg + "'  />" +
+                            "<p>" + data[2].goodsName + "</p>" +
+                            "<div>" + "<em>￥</em><span class='s1'>" + data[2].price + ".00</span ><span class='s2'>￥999</span></div>" +
+                            "</li>" +
+                            "<li id='" + data[3].goodsID + "-3'>" +
+                            "<img src='" + data[3].goodsListImg + "'  />" +
+                            "<p>" + data[3].goodsName + "</p>" +
+                            "<div>" + "<em>￥</em><span class='s1'>" + data[3].price + ".00</span ><span class='s2'>￥999</span></div>" +
+                            "<li id='" + data[4].goodsID + "-4'>" +
+                            "<img src='" + data[4].goodsListImg + "'  />" +
+                            "<p>" + data[4].goodsName + "</p>" +
+                            "<div>" + "<em>￥</em><span class='s1'>" + data[4].price + ".00</span ><span class='s2'>￥999</span></div>" +
+                            "</li>" +
+                            "<li id='" + data[5].goodsID + "-5'>" +
+                            "<img src='" + data[5].goodsListImg + "'  />" +
+                            "<p>" + data[5].goodsName + "</p>" +
+                            "<div>" + "<em>￥</em><span class='s1'>" + data[5].price + ".00</span ><span class='s2'>￥999</span></div>" +
+                            "</li>" +
+                            "<li id='" + data[6].goodsID+ "-6'>" +
+                            "<img src='" + data[6].goodsListImg + "'  />" +
+                            "<p>" + data[6].goodsName + "</p>" +
+                            "<div>" + "<em>￥</em><span class='s1'>" + data[6].price + ".00</span ><span class='s2'>￥999</span></div>" +
+                            "</li>" +
+                            "<li id='" + data[7].goodsID + "-7'>" +
+                            "<img src='" + data[7].goodsListImg + "' />" +
+                            "<p>" + data[7].goodsName + "</p>" +
+                            "<div>" + "<em>￥</em><span class='s1'>" + data[0].price + ".00</span ><span class='s2'>￥999</span></div>" +
+                            "</li>" +
+                            "<li id='" + data[9].goodsID + "-9'>" +
+                            "<img src='" + data[9].goodsListImg + "'  />" +
+                            "<p>" + data[9].goodsName + "</p>" +
+                            "<div>" + "<em>￥</em><span class='s1'>" + data[9].price + ".00</span ><span class='s2'>￥999</span></div>" +
+                            "</li>";
+                        document.getElementById("uu").innerHTML = con;
+                    }
+                })
+            } else {
+                $(".la")[0].style.display = "none"
+            }
+            if (myScroll.y < myScroll.maxScrollY - 20) {
+            }
+
+        })
+        //        --footer
+
+//    }
+//    ;
+    $(".bb").each(function (i) {
+        console.log(1)
+        $(".bb").eq(i)[0].index = i;
+        $(".bb").eq(i).on("tap", function () {
+            console.log(this.index)
+            $(".bb").not($(this)).css("border-top", " solid 3px #484850")
+            $(this)[0].style.borderTop = "3px solid #d71110";
+        })
+    })
+    //    创数据
+    setInterval(function () {
+            $("#uu li").each(function (i) {
+                $("#uu li").eq(i)[0].index = i;
+                $("#uu li").eq(i).on("tap", function () {
+                    console.log(this.id)
+                    window.location.href = "detal.html?uname=" + this.id + "";
+                })
+            })
+//        }
+    },500)
+
+
+</script>
+
+</html>
